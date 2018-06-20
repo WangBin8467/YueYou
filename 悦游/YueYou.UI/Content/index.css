@@ -1,0 +1,84 @@
+﻿body{
+    font-size:14px;
+    line-height:normal;
+    font-family: "Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei","SimHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.main-white{
+    width:100%;
+    /*background-color:#e2e2e2;*/
+}
+.guide-container{
+    width:1030px;
+}
+.guide-text{
+    text-align:center;
+    margin:80px 0 50px;
+    font-weight:bold;
+    font-size:32px;
+}
+.guide{
+    width: 304px!important;
+    margin-right: 29px;
+    float: left;
+    margin-bottom:44px;
+}
+.guide .guide-section{
+    position: relative;
+    margin-bottom: 16px;
+    overflow: hidden;                
+}
+.guide span{
+    vertical-align:baseline;
+}
+.guide-img{
+    border-radius:4px;
+    width:304px;
+    height:177px;
+    max-width:100%;
+}
+.content-title{
+    width: 100%;
+    height: 44px;
+    border-radius: 0 0 4px 4px;
+    line-height: 44px;
+    padding: 0 10px;
+    position: absolute;
+    left: 0;
+    bottom: -54px;
+    background-color: rgba(0,0,0,0.4);
+}
+.guide p{
+    margin-bottom:10px;
+}
+.guide-left{
+    width:49%;
+    display:inline-block;
+    font-size:14px;
+}
+.guide-tip{
+    font-weight:bold;
+    font-size:18px;
+}
+.guide-right{
+    width:49%;
+    display:inline-block;
+    text-align:right;
+    color:#77c0cd; 
+}
+.guide-level{
+    color:yellow;
+}
+.guide .li{
+    width: 11px;
+    height: 14px;
+    margin: -2px 5px 0 0;
+    background:url("/images/Icont/地点.png") no-repeat ;
+    display:inline-block;
+}
+/*------回到顶部------*/
+.returntop{
+	position: fixed;
+	right: 20px;
+    bottom: 100px;
+	opacity: 0.6;
+}

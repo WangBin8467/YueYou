@@ -1,0 +1,142 @@
+﻿@model YueYou.UI.Models.GuideDetailsViewModel
+
+@{
+    ViewBag.Title = "GuideDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+<link href="~/Content/GuideDetails.css" rel="stylesheet" />
+<link href="~/Content/GuideComment.css" rel="stylesheet" />
+
+<div class="guidecontainer">
+    <div class="breadcrumb main">
+        <li><a href="@Url.Action("Index","Home")" target="_blank">首页</a></li>
+        <li><a href="@Url.Action("Index","Home")" target="_blank">导游</a></li>
+        <li class="active">@Model.guidedetails1.Guide_rname</li>
+    </div>
+    <div class="contentshow">
+        <div class="guide-hd">
+            <img class="guide-hd-img" src="~/images/1.jpg">
+            <div class="guide-hd-wrap">
+                <div class="banner-inner">
+                    <div class="pic-area">
+                        <a href="#"><img src="@Model.guidedetails1.Guide_photo"></a>
+                    </div>
+                    <div class="text-area">
+                        <h2 class="title">@Model.guidedetails1.Guide_rname</h2>
+                        <p class="tetx">@Model.guidedetails1.Guide_area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-right">
+                <a href="#" class="guide-like" id="guide-like">
+                    <i class="like"></i>
+                    <p class="action">关注</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin: 0 auto;width: 970px;">
+
+    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#infor" >导游资料</a></li>
+                    <li><a href="#coment">用户评论</a></li>
+                    <li><a href="#price" >服务收费</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div data-spy="scroll" data-target="#navbar-example" data-offset="0"
+         style="overflow:auto; position: relative;padding-top:60px;">
+        <div id="guide-body">
+            @*导游资料*@
+            <div id="infor" >
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">基本信息</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>性别</span><span class="data-span">@Model.guidedetails1.Guide_sex</span></p>                  
+                        <p><span>家乡</span><span class="data-span">@Model.guidedetails1.Guide_area</span></p>
+                        <p><span>年龄</span><span class="data-span">@Model.guidedetails1.Guide_age</span></p>
+                        <p><span>在该城市居住时长</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_livetime</span></p>
+                        <p><span>加入时间</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_jiontime</span></p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">语言能力</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>语言</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_language</span></p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">基本技能</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>工作状态</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_job</span></p>
+                    </div>
+                </div>
+            </div>
+            @*服务评论*@
+            <div id="coment"  class="commentAll">
+                <!--评论区域 begin-->
+                <div class="reviewArea clearfix">               
+                    <textarea class="content comment-input" placeholder="说些什么话吧" onkeyup="keyUP(this)"></textarea>
+                    <a href="javascript:;" class="plBtn">评论</a>
+                </div>
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show">
+                    <div class="comment-show-con clearfix">
+                        <div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div>
+                        <div class="comment-show-con-list pull-left clearfix">
+                            <div class="pl-text clearfix">
+                                <a href="#" class="comment-size-name">张三 : </a>
+                                <span class="my-pl-con">&nbsp;来啊 造作啊!</span>
+                            </div>
+                            <div class="date-dz">
+                                <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
+                                <div class="date-dz-right pull-right comment-pl-block">
+                                    <a href="javascript:;" class="removeBlock">删除</a>
+                                    <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                    <span class="pull-left date-dz-line">|</span>
+                                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                </div>
+                            </div>
+                            <div class="hf-list-con"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--回复区域 end-->
+            </div>
+            @*费用说明*@
+            <div id="price" style="height: 500px;background-color: red;">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="right-btn">
+    <ul id="right-btn">
+        <li><a href="#infor"><img src="~/images/Icont/资料.png" /></a></li>
+        <li><a href="#coment"><img src="~/images/Icont/评论.png" /></a></li>
+        <li><a href="#price"><img src="~/images/Icont/费用.png" /></a></li>
+        <li><a href="#"><img src="~/images/Icont/回到顶部.png" id="to_top-images"/></a></li>
+    </ul>
+</div>
+@section scripts {
+@*<script src="~/Scripts/jquery-1.12.0.min.js" type="text/javascript"></script>*@
+<script src="~/Scripts/guidedetails.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.flexText.js" type="text/javascript"></script>
+<script src="~/Scripts/guidecomment.js" type="text/javascript"></script>    
+}
