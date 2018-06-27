@@ -9,5 +9,6 @@ namespace IBLL
 {
     public partial interface IReplyBLL:IBaseBLL<Reply>
     {
+        IQueryable<Reply> GetReplyByCommentId(int id);
     }
 }

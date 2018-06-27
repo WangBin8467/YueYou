@@ -205,6 +205,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\LoginAttribute.cs" />
+    <Compile Include="Attributes\MultiButtonAttribute.cs" />
     <Compile Include="Controllers\GuideDetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
@@ -459,6 +461,7 @@
     <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\Search\GuidePage.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\GuideDetails\GuideComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

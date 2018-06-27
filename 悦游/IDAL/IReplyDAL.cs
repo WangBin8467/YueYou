@@ -9,6 +9,6 @@ namespace IDAL
 {
     public partial interface  IReplyDAL:IBaseDAL<Reply>
     {
-
+        IQueryable<Reply> GetReplyByCommentId(int id);
     }
 }

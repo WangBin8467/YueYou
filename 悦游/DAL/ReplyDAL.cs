@@ -10,5 +10,10 @@ namespace DAL
 {
    public partial class ReplyDAL : BaseDAL<Reply>, IReplyDAL
     {
+        public IQueryable<Reply> GetReplyByCommentId(int id)
+        {
+            var commentreply = dbContext.Set<Reply>().Where(u => u.Comment_id == id).OrderByDescending(u => u.Reply_time);
+            return commentreply;
+        }
     }
 }

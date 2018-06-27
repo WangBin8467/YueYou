@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="YueYouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="YueYouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="Admin_id" />
@@ -31,7 +31,7 @@
           <Property Name="Guide_id" Type="int" Nullable="false" />
           <Property Name="Comment_time" Type="datetime" Nullable="false" />
           <Property Name="Comment_contents" Type="varchar(max)" Nullable="false" />
-          <Property Name="Comment_level" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Comment_level" Type="varchar" MaxLength="20" />
           <Property Name="Contents_qulity" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Guide">
@@ -122,7 +122,8 @@
           <Property Name="User_id" Type="int" Nullable="false" />
           <Property Name="Guide_id" Type="int" Nullable="false" />
           <Property Name="Reply_time" Type="datetime" Nullable="false" />
-          <Property Name="Reply_contents" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Reply_contents" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comment_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Routing_arrangement">
           <Key>
@@ -366,6 +367,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reply_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Reply_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reply_Guide">
           <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
           <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
@@ -504,6 +517,10 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reply_Comment" Association="Self.FK_Reply_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reply_Guide" Association="Self.FK_Reply_Guide">
             <End Role="Guide" EntitySet="Guide" />
             <End Role="Reply" EntitySet="Reply" />
@@ -517,8 +534,7 @@
             <End Role="Routing_arrangement" EntitySet="Routing_arrangement" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="YueYouModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -551,10 +567,11 @@
           <Property Name="Guide_id" Type="Int32" Nullable="false" />
           <Property Name="Comment_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Comment_contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Comment_level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment_level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Contents_qulity" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Guide" Relationship="Self.FK_Comment_Guide" FromRole="Comment" ToRole="Guide" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="UserInfo" />
+          <NavigationProperty Name="Reply" Relationship="Self.FK_Reply_Comment" FromRole="Comment" ToRole="Reply" />
         </EntityType>
         <EntityType Name="Guide">
           <Key>
@@ -660,7 +677,9 @@
           <Property Name="User_id" Type="Int32" Nullable="false" />
           <Property Name="Guide_id" Type="Int32" Nullable="false" />
           <Property Name="Reply_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Reply_contents" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reply_contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Reply_Comment" FromRole="Reply" ToRole="Comment" />
           <NavigationProperty Name="Guide" Relationship="Self.FK_Reply_Guide" FromRole="Reply" ToRole="Guide" />
           <NavigationProperty Name="UserInfo" Relationship="Self.FK_Reply_User" FromRole="Reply" ToRole="UserInfo" />
         </EntityType>
@@ -829,6 +848,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reply_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Reply_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Guide_GuideDetails">
           <End Role="GuideDetails" Type="Self.GuideDetails" Multiplicity="1" />
           <End Role="Guide" Type="Self.Guide" Multiplicity="*" />
@@ -976,6 +1007,10 @@
           <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Comment" Association="Self.FK_Reply_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Reply" EntitySet="Reply" />
           </AssociationSet>
           <AssociationSet Name="FK_Guide_GuideDetails" Association="Self.FK_Guide_GuideDetails">
             <End Role="GuideDetails" EntitySet="GuideDetails" />
@@ -1147,6 +1182,7 @@
                 <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
                 <ScalarProperty Name="Reply_time" ColumnName="Reply_time" />
                 <ScalarProperty Name="Reply_contents" ColumnName="Reply_contents" />
+                <ScalarProperty Name="Comment_id" ColumnName="Comment_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

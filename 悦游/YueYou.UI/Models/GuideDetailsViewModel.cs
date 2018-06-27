@@ -14,6 +14,8 @@ namespace YueYou.UI.Models
         public IEnumerable<Guide> guide { get; set; }
         public IEnumerable<GuideDetails> guidedetails { get; set; }
         public Guide guidedetails1 { get; set; }
+
+        public Comment guidecomment { get; set; }
     }
 
 }

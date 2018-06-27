@@ -30,9 +30,6 @@
     padding: 40px 60px;
     background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
 }
-.banner-inner{
-
-}
 .pic-area{
 	float: left;
     width: 88px;
@@ -92,11 +89,18 @@
     margin-bottom: 22px;
     padding:40px 60px 10px;
 }
+#guide-body #price .clearfix{
+	border-bottom: 1px solid #eee;
+    margin-bottom: 22px;
+    padding:40px 60px 10px;
+}
+
 .clearfix .left{
 	margin-right: 80px;
 	float: left;
 }
 .clearfix .left h6{
+    font-weight:bold;
 	margin: 0;
 }
  .font-size2{

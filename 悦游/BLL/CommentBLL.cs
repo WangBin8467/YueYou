@@ -23,5 +23,13 @@ namespace BLL
             var comments = CommentDAL.GetTop6();
             return comments;
         }
+
+        public IQueryable<Comment> GetGuideCommentByGuideId(int id)
+        {
+            var guidecomment = CommentDAL.GetGuideCommentByGuideId(id);
+            return guidecomment;
+        }
+
+
     }
 }

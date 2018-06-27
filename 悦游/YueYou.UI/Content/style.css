@@ -19,9 +19,7 @@ html, body{
    padding:0px;
 }
 /*头部*/
-.header {
-     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
-}
+
 .header-main {
   padding: 0px 25px 0px 10px;
 }
@@ -154,7 +152,6 @@ span.head-line {
     text-align:center;
     line-height:30px;
     font-family:'Microsoft YaHei';
-    /*background-color:#e2e2e2;*/
 }
 .footer_top{
     height:35px;
@@ -301,6 +298,7 @@ span.potrul-line {
 /*--- slider-css --*/
 .slider {
 	position: relative;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
 }
 .rslides {
   position: relative;

@@ -10,5 +10,7 @@ namespace IDAL
     public partial interface ICommentDAL:IBaseDAL<Comment>
     {
         IQueryable<Comment> GetTop6();
+
+        IQueryable<Comment> GetGuideCommentByGuideId(int id);
     }
 }

@@ -86,6 +86,8 @@ namespace YueYou.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                Session["User_name"] = userinfo.User_name;
+                Session["User_id"] = userinfo.User_id;
                 iuserbll.Add(userinfo);
                 return Content("<script>alert('用户注册成功！');window.open('" + Url.Content("~/Home/Index") + "', '_self')</script>");
             }

@@ -10,5 +10,10 @@ namespace IBLL
     public partial interface ICommentBLL:IBaseBLL<Comment>
     {
         IQueryable<Comment> GetTop6();
+
+        IQueryable<Comment> GetGuideCommentByGuideId(int id);
+       
     }
+
+  
 }

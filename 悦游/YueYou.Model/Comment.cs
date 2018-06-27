@@ -24,5 +24,6 @@ namespace YueYou.Model
     
         public virtual Guide Guide { get; set; }
         public virtual UserInfo UserInfo { get; set; }
+        public virtual Reply Reply { get; set; }
     }
 }

@@ -19,7 +19,9 @@ namespace YueYou.Model
         public int Guide_id { get; set; }
         public System.DateTime Reply_time { get; set; }
         public string Reply_contents { get; set; }
-    
+        public int Comment_id { get; set; }
+        
+        public virtual Comment Comment { get; set; }
         public virtual Guide Guide { get; set; }
         public virtual UserInfo UserInfo { get; set; }
     }

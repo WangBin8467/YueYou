@@ -66,7 +66,7 @@
     color:#77c0cd; 
 }
 .guide-level{
-    color:yellow;
+    color:#c56e53;
 }
 .guide .li{
     width: 11px;
@@ -74,6 +74,7 @@
     margin: -2px 5px 0 0;
     background:url("/images/Icont/地点.png") no-repeat ;
     display:inline-block;
+    vertical-align:bottom;
 }
 /*------回到顶部------*/
 .returntop{

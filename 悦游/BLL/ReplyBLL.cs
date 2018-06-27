@@ -18,5 +18,11 @@ namespace BLL
         {
             Dal = ReplyDAL;
         }
+        public IQueryable<Reply> GetReplyByCommentId(int id)
+        {
+            var commentreply = ReplyDAL.GetReplyByCommentId(id);
+            return commentreply;
+        }
+
     }
 }
