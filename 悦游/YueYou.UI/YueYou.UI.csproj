@@ -415,6 +415,8 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\YueYou.UI.dll.config" />
+    <Content Include="json\pl.json" />
+    <Content Include="json\hf.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\guidecomment.js" />

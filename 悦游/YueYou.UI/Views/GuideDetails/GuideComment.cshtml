@@ -10,8 +10,8 @@
     <input type="submit" value="评论" class="plBtn" />
 </div>
 <!--评论区域 end-->
-<!--回复区域 begin-->
-<div class="comment-show">
+<!--评论展示区域 begin-->
+<div class="comment-show" id="comment-show">
     @foreach (var item in Model)
     {
         <div class="comment-show-con clearfix">
@@ -36,4 +36,4 @@
     }
     
 </div>
-    <!--回复区域 end-->
+    <!--评论展示区域 end-->
